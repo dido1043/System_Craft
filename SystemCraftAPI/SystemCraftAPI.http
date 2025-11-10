@@ -1,0 +1,6 @@
+@SystemCraftAPI_HostAddress = http://localhost:5121
+
+GET {{SystemCraftAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
