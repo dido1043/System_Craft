@@ -2,12 +2,15 @@ using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 using SystemCraftAPI.Model;
 
-Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<SystemCraftDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SystemCraftDb")));
+builder.Configuration.AddEnvironmentVariables();
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<SystemCraftDbContext> (options =>
+    options.UseSqlServer(connectionString));
 
 builder.Services.AddOpenApi();
 
@@ -19,5 +22,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+
 
 app.Run();
