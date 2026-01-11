@@ -1,15 +1,16 @@
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using SystemCraftAPI.Extensions;
 using SystemCraftAPI.Model;
-using SystemCraftAPI.Model.Entities;
-using MonitorEntity = SystemCraftAPI.Model.Entities.Monitor;
-
+using SystemCraftAPI.Service;
 var builder = WebApplication.CreateBuilder(args);
 
 Env.TraversePath().Load();
 builder.Configuration.AddEnvironmentVariables();
+
+//Services
+builder.Services.AddScoped<LaptopService>();
+builder.Services.AddControllers();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
@@ -45,5 +46,6 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.MapControllers();
 
 app.Run();
