@@ -8,3 +8,6 @@
 - [x] Update SystemCraftAPI/Program.cs to load .env file and register the DbContext service.
 - [x] Run `dotnet ef migrations add InitialCreate` to generate initial migration files.
 - [x] Optionally, run `dotnet ef database update` to apply the migration (if database is available).
+- [x] Add User entity properties to SystemCraftAPI/Model/Entities/User.cs
+- [x] Add User DbSet to SystemCraftAPI/Model/SystemCraftDbContext.cs
+- [x] Run `dotnet ef migrations add AddUserEntity` to generate migration for User entity.

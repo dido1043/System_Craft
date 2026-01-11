@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SystemCraftAPI.Model;
 
@@ -11,9 +12,11 @@ using SystemCraftAPI.Model;
 namespace SystemCraftAPI.Migrations
 {
     [DbContext(typeof(SystemCraftDbContext))]
-    partial class SystemCraftDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260111110847_NewSchema")]
+    partial class NewSchema
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

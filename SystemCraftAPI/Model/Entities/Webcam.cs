@@ -9,30 +9,31 @@ namespace SystemCraftAPI.Model.Entities
 
         [Required]
         [StringLength(100)]
-        public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 
         [Required]
         [Range(0.01, double.MaxValue)]
         public decimal Price { get; set; }
 
         [StringLength(500)]
-        public string Description { get; set; }
+    public string Description { get; set; } = string.Empty;
 
-        [Required]
-        [StringLength(50)]
-        public string Brand { get; set; }
+    [Required]
+    public int BrandId { get; set; }
+
+    public Brand Brand { get; set; } = null!;
 
         [StringLength(50)]
-        public string Model { get; set; }
+    public string Model { get; set; } = string.Empty;
 
         [StringLength(20)]
-        public string Resolution { get; set; } // e.g., 1080p
+    public string Resolution { get; set; } = string.Empty; // e.g., 1080p
 
         [Range(1, int.MaxValue)]
         public int FrameRate { get; set; } // FPS
 
         [StringLength(20)]
-        public string LensType { get; set; } // e.g., Fixed, Zoom
+    public string LensType { get; set; } = string.Empty; // e.g., Fixed, Zoom
 
         [Range(1, int.MaxValue)]
         public int FieldOfView { get; set; } // in degrees
@@ -42,20 +43,20 @@ namespace SystemCraftAPI.Model.Entities
         public bool IsWireless { get; set; }
 
         [StringLength(20)]
-        public string Connectivity { get; set; } // e.g., USB
+    public string Connectivity { get; set; } = string.Empty; // e.g., USB
 
         public bool HasAutofocus { get; set; }
 
         public bool HasLED { get; set; }
 
         [StringLength(20)]
-        public string Color { get; set; }
+    public string Color { get; set; } = string.Empty;
 
         [Range(0.01, double.MaxValue)]
         public double Weight { get; set; } // in kg
 
         [StringLength(10)]
-        public string Warranty { get; set; } // e.g., 1 year
+    public string Warranty { get; set; } = string.Empty; // e.g., 1 year
 
         public DateTime ReleaseDate { get; set; }
 

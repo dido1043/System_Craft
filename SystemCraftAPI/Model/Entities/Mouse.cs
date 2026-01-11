@@ -9,24 +9,25 @@ namespace SystemCraftAPI.Model.Entities
 
         [Required]
         [StringLength(100)]
-        public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 
         [Required]
         [Range(0.01, double.MaxValue)]
         public decimal Price { get; set; }
 
         [StringLength(500)]
-        public string Description { get; set; }
+    public string Description { get; set; } = string.Empty;
 
-        [Required]
-        [StringLength(50)]
-        public string Brand { get; set; }
+    [Required]
+    public int BrandId { get; set; }
+
+    public Brand Brand { get; set; } = null!;
 
         [StringLength(50)]
-        public string Model { get; set; }
+    public string Model { get; set; } = string.Empty;
 
         [StringLength(20)]
-        public string Type { get; set; } // e.g., Optical, Laser
+    public string Type { get; set; } = string.Empty; // e.g., Optical, Laser
 
         public bool IsWireless { get; set; }
 
@@ -37,13 +38,13 @@ namespace SystemCraftAPI.Model.Entities
         public int Buttons { get; set; }
 
         [StringLength(20)]
-        public string Color { get; set; }
+    public string Color { get; set; } = string.Empty;
 
         [Range(0.01, double.MaxValue)]
         public double Weight { get; set; } // in kg
 
         [StringLength(20)]
-        public string Connectivity { get; set; } // e.g., USB, Bluetooth
+    public string Connectivity { get; set; } = string.Empty; // e.g., USB, Bluetooth
 
         public bool HasScrollWheel { get; set; }
 
@@ -53,7 +54,7 @@ namespace SystemCraftAPI.Model.Entities
         public int BatteryLife { get; set; } // in hours
 
         [StringLength(10)]
-        public string Warranty { get; set; } // e.g., 1 year
+    public string Warranty { get; set; } = string.Empty; // e.g., 1 year
 
         public DateTime ReleaseDate { get; set; }
 

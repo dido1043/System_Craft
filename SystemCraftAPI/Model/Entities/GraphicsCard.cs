@@ -9,30 +9,31 @@ namespace SystemCraftAPI.Model.Entities
 
         [Required]
         [StringLength(100)]
-        public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 
         [Required]
         [Range(0.01, double.MaxValue)]
         public decimal Price { get; set; }
 
         [StringLength(500)]
-        public string Description { get; set; }
+    public string Description { get; set; } = string.Empty;
 
-        [Required]
-        [StringLength(50)]
-        public string Brand { get; set; }
+    [Required]
+    public int BrandId { get; set; }
 
-        [StringLength(50)]
-        public string Model { get; set; }
+    public Brand Brand { get; set; } = null!;
 
         [StringLength(50)]
-        public string Chipset { get; set; } // e.g., NVIDIA RTX 3080
+    public string Model { get; set; } = string.Empty;
+
+        [StringLength(50)]
+    public string Chipset { get; set; } = string.Empty; // e.g., NVIDIA RTX 3080
 
         [Range(1, int.MaxValue)]
         public int VRAM { get; set; } // in GB
 
         [StringLength(20)]
-        public string MemoryType { get; set; } // e.g., GDDR6
+    public string MemoryType { get; set; } = string.Empty; // e.g., GDDR6
 
         [Range(1, int.MaxValue)]
         public int MemoryBus { get; set; } // in bits
@@ -44,13 +45,13 @@ namespace SystemCraftAPI.Model.Entities
         public int BoostClock { get; set; } // in MHz
 
         [StringLength(20)]
-        public string Interface { get; set; } // e.g., PCIe 4.0
+    public string Interface { get; set; } = string.Empty; // e.g., PCIe 4.0
 
         [Range(1, int.MaxValue)]
         public int PowerConsumption { get; set; } // in Watts
 
         [StringLength(20)]
-        public string CoolingType { get; set; } // e.g., Air, Liquid
+    public string CoolingType { get; set; } = string.Empty; // e.g., Air, Liquid
 
         [Range(1, int.MaxValue)]
         public int Length { get; set; } // in mm
@@ -60,10 +61,10 @@ namespace SystemCraftAPI.Model.Entities
         public bool SupportsDLSS { get; set; }
 
         [StringLength(20)]
-        public string Ports { get; set; } // e.g., HDMI, DisplayPort
+    public string Ports { get; set; } = string.Empty; // e.g., HDMI, DisplayPort
 
         [StringLength(10)]
-        public string Warranty { get; set; } // e.g., 3 years
+    public string Warranty { get; set; } = string.Empty; // e.g., 3 years
 
         public DateTime ReleaseDate { get; set; }
 

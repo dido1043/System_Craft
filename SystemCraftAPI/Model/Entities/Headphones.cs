@@ -9,29 +9,30 @@ namespace SystemCraftAPI.Model.Entities
 
         [Required]
         [StringLength(100)]
-        public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 
         [Required]
         [Range(0.01, double.MaxValue)]
         public decimal Price { get; set; }
 
         [StringLength(500)]
-        public string Description { get; set; }
+    public string Description { get; set; } = string.Empty;
 
-        [Required]
-        [StringLength(50)]
-        public string Brand { get; set; }
+    [Required]
+    public int BrandId { get; set; }
+
+    public Brand Brand { get; set; } = null!;
 
         [StringLength(50)]
-        public string Model { get; set; }
+    public string Model { get; set; } = string.Empty;
 
         [StringLength(20)]
-        public string Type { get; set; } // e.g., Over-ear, In-ear
+    public string Type { get; set; } = string.Empty; // e.g., Over-ear, In-ear
 
         public bool IsWireless { get; set; }
 
         [StringLength(20)]
-        public string Connectivity { get; set; } // e.g., Bluetooth, Wired
+    public string Connectivity { get; set; } = string.Empty; // e.g., Bluetooth, Wired
 
         public bool HasMicrophone { get; set; }
 
@@ -39,15 +40,15 @@ namespace SystemCraftAPI.Model.Entities
         public int BatteryLife { get; set; } // in hours
 
         [StringLength(20)]
-        public string DriverSize { get; set; } // e.g., 40mm
+    public string DriverSize { get; set; } = string.Empty; // e.g., 40mm
 
         [StringLength(20)]
-        public string FrequencyResponse { get; set; } // e.g., 20Hz-20kHz
+    public string FrequencyResponse { get; set; } = string.Empty; // e.g., 20Hz-20kHz
 
         public bool IsNoiseCancelling { get; set; }
 
         [StringLength(20)]
-        public string Color { get; set; }
+    public string Color { get; set; } = string.Empty;
 
         [Range(0.01, double.MaxValue)]
         public double Weight { get; set; } // in kg
@@ -55,7 +56,7 @@ namespace SystemCraftAPI.Model.Entities
         public bool IsFoldable { get; set; }
 
         [StringLength(10)]
-        public string Warranty { get; set; } // e.g., 1 year
+    public string Warranty { get; set; } = string.Empty; // e.g., 1 year
 
         public DateTime ReleaseDate { get; set; }
 
