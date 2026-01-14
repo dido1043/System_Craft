@@ -1,8 +1,12 @@
 using DotNetEnv;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Text;
 using SystemCraftAPI.Model;
 using SystemCraftAPI.Service;
+
 var builder = WebApplication.CreateBuilder(args);
 
 Env.TraversePath().Load();
@@ -16,12 +20,37 @@ foreach (var t in System.Reflection.Assembly.GetExecutingAssembly().GetTypes())
         builder.Services.AddScoped(t);
     }
 }
-builder.Services.AddControllers();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<SystemCraftDbContext>(options =>
     options.UseSqlServer(connectionString));
+
+var jwtSection = builder.Configuration.GetSection("Jwt");
+var jwtKey = jwtSection.GetValue<string>("Key") ?? string.Empty;
+var jwtIssuer = jwtSection.GetValue<string>("Issuer");
+var jwtAudience = jwtSection.GetValue<string>("Audience");
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = jwtIssuer,
+        ValidAudience = jwtAudience,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+    };
+});
+
+builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
@@ -51,7 +80,8 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
