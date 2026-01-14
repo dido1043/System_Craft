@@ -30,4 +30,18 @@ public class AuthController : ControllerBase
         if (result == null) return Unauthorized();
         return Ok(result);
     }
+
+    [HttpGet("current-user")]
+    public IActionResult GetCurrentUser([FromQuery] int userId)
+    {
+        var user = _authService.GetUserById(userId);
+        return user == null ? NotFound() : Ok(user);
+    }
+
+    [HttpGet("find-by-email")]
+    public IActionResult GetUserByEmail([FromQuery] string email)
+    {
+        var user = _authService.GetUserByEmail(email);
+        return user == null ? NotFound() : Ok(user);
+    }
 }

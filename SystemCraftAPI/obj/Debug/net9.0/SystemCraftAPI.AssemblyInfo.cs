@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SystemCraftAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c8f97e469ece29466c1bc0da88a36c4e07f6579")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8600bd6b61269843c72558d8b425ebe57aeb6c59")]
 [assembly: System.Reflection.AssemblyProductAttribute("SystemCraftAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SystemCraftAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
